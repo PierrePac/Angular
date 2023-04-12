@@ -19,6 +19,7 @@ import { ProduitsComponent } from './produits/produits.component';
 import { registerLocaleData } from '@angular/common';
 import * as fr from '@angular/common/locales/fr';
 import { NgbPaginationModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
+import { ConnexionComponent } from './connexion/connexion.component';
 
 
 
@@ -36,6 +37,7 @@ import { NgbPaginationModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap'
     SousCategorieListComponent,
     ProduitsListComponent,
     ProduitsComponent,
+    ConnexionComponent,
 
   ],
   imports: [
