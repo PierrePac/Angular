@@ -20,6 +20,7 @@ import { registerLocaleData } from '@angular/common';
 import * as fr from '@angular/common/locales/fr';
 import { NgbPaginationModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 import { ConnexionComponent } from './connexion/connexion.component';
+import { httpInterceptorProviders } from './interceptors';
 
 
 
@@ -50,7 +51,8 @@ import { ConnexionComponent } from './connexion/connexion.component';
     NgbAlertModule,
   ],
   providers: [
-    { provide: LOCALE_ID, useValue: 'fr-FR' }
+    { provide: LOCALE_ID, useValue: 'fr-FR' },
+    httpInterceptorProviders
   ],
   bootstrap: [AppComponent]
 })
