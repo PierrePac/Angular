@@ -1,0 +1,73 @@
+<div class="container-fluid row my-5">
+  <div class="col col-6 px-3 text-center">
+    <h2 class="text-uppercase text-white">Rajouter un nouveau produit</h2>
+
+    <form [formGroup]="photoPrincipalForm">
+      <div class="mb-3">
+        <label for="photo_Principal" class="form-label text-white">Photo Principale</label>
+        <div class="d-flex flex-row">
+          <input type="file" class="form-control me-3" id="photo_Principal" formControlName="photoPrincipal" (change)="this.onFilechange($event)">
+          <button (click)="this.uploadPrincipale()" type="button" class="btn btn-primary">Télécharger</button>
+        </div>
+        <div  *ngIf="imagePrincipale">
+          <p>{{imagePrincipale}}</p>
+        </div>
+      </div>
+    </form>
+
+    <form [formGroup]="photoForm">
+      <div class="mb-3">
+        <label for="photos" class="form-label text-white">Photos secondaires</label>
+        <div class="d-flex flex-row">
+          <input type="file" class="form-control me-3" id="photos" formControlName="photo" (change)="this.onFilechange($event)">
+          <button (click)="this.upload()" type="button" class="btn btn-primary">Télécharger</button>
+        </div>
+        <div  *ngIf="images">
+          <p *ngFor="let image of images">{{image}}</p>
+        </div>
+      </div>
+    </form>
+    <form [formGroup]="produitForm">
+        <div class="mb-3">
+            <label for="refProduit" class="form-label text-white">Référence du produit</label>
+            <input type="text" class="form-control" id="refProduit" formControlName="refProduit">
+        </div>
+        <div class="mb-3">
+            <label for="shortLibel" class="form-label text-white">Titre</label>
+            <input type="text" class="form-control" id="shortLibel" formControlName="shortLibel">
+        </div>
+        <div class="mb-3">
+            <label for="longLibel" class="form-label text-white">Description</label>
+            <textarea class="form-control" id="longLibel" formControlName="longLibel"></textarea>
+        </div>
+          <div class="mb-3">
+            <label for="idCategorie" class="form-label text-white">Catégorie</label>
+            <select class="form-select" id="idCategorie" formControlName="idCategorie">
+              <option value='/api/categories/{{categorie.id}}'  *ngFor="let categorie of categories$ | async">{{ categorie.nomination }}</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="prixHt" class="form-label text-white">Prix HT</label>
+            <input type="text" class="form-control" id="prixHt" formControlName="prixHt">
+          </div>  
+          <button (click)="onSubmitForm()" type="submit" class="btn btn-primary" [disabled]="produitForm.invalid">Rajouter</button>
+    </form>
+  </div>
+  <div class="col col-6 px-3 text-center" *ngIf="produitpreview$ | async as produit">
+    <div class="card mx-2 my-2 mx-auto h-100" style="width: 25rem">
+      <div >
+        <img class="card-img-top" [src]="produit.photo" alt="image Produit"/>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Titre: {{ produit.shortLibel| uppercase }}</h5>
+  
+        <span>Description {{ produit.longLibel }}</span>
+        <ul class="list-group">
+          <li class="list-group-item">Catégorie: {{produit.idCategorie}}</li>
+          <li class="list-group-item">Référence du produit: {{produit.refProduit}}</li>
+          <li class="list-group-item">Prix HT: {{produit.prixHt | currency: 'EUR': true: '1.0-2' }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

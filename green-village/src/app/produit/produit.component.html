@@ -1,0 +1,63 @@
+<div *ngIf="produit$ | async as produit" class="container-fluid my-3 row">
+    <h1 class="text-center">Photo Principale</h1>
+    <div class="photo my-2 mx-2" *ngFor="let photoPrincipale of majorPhoto$ | async">
+        <div class="card mx-auto" style="width: 18rem;">
+            <img src="http://127.0.0.1:8000/{{photoPrincipale.src}}" class="card-img-top" [alt]=photoPrincipale.refProduit>
+            <div class="card-body text-center">
+                <button class="btn btn-outline-danger mx-2 my-2">Supprimer</button>
+            </div>
+        </div>
+        <h1 class="text-center">Photos Secondaire</h1>
+        <div class="photoSecondaires d-flex flex-row flex-wrap">
+            <div class="card mx-auto my-2" style="width: 20rem;" *ngFor="let otherPic of otherPhotos$ | async">
+                <img src="http://127.0.0.1:8000/{{otherPic.src}}" class="card-img-top" [alt]=otherPic.refProduit>
+                <div class="card-body text-center">
+                    <button (click)="this.promotePicture(otherPic.id, produit.id, photoPrincipale.id)" class="btn btn-outline-success mx-2 my-2 ">Définir comme principale</button>
+                    <button (click)="this.deletePicture(otherPic.id)" class="btn btn-outline-danger mx-2 my-2 ">Supprimer</button>
+                </div>
+            </div>
+        </div>
+        <h1  class="text-center">Rajouter une photo</h1>
+        <form [formGroup]="photoForm" class="col col-lg-7 mx-auto">
+            <div class="mb-3">
+              <label for="photos" class="form-label text-white">Photos secondaires</label>
+              <div class="d-flex flex-row">
+                <input type="file" class="form-control me-3" id="photos" formControlName="photo" (change)="this.onFilechange($event)">
+                <button (click)="this.upload()" type="button" class="btn btn-primary">Télécharger</button>
+              </div>
+            </div>
+          </form>
+    </div>
+    <div class="details col col-lg-7 mx-auto">        
+        <h1 class="text-center">Détails du produit</h1>
+        <form [formGroup]="produitForm">
+            <div class="mb-3">
+                <label for="refProduit" class="form-label text-white">Référence du produit</label>
+                <input type="text" class="form-control" id="refProduit" formControlName="refProduit" [(ngModel)]=produit.refProduit>
+            </div>
+            <div class="mb-3">
+                <label for="shortLibel" class="form-label text-white">Titre</label>
+                <input type="text" class="form-control" id="shortLibel" formControlName="shortLibel" [(ngModel)]=produit.shortLibel>
+            </div>
+            <div class="mb-3">
+                <label for="longLibel" class="form-label text-white">Description</label>
+                <textarea class="form-control" id="longLibel" formControlName="longLibel" [(ngModel)]=produit.longLibel>produit.longLibel</textarea>
+            </div> 
+            <div class="mb-3">
+                <label for="idCategorie" class="form-label text-white">Catégorie</label>
+                <select class="form-select" id="idCategorie" formControlName="idCategorie" [(ngModel)]=produit.idCategorie>
+                    <option value='/api/categories/{{categorie.id}}'  *ngFor="let categorie of categories$ | async">{{ categorie.nomination }}</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="prixHt" class="form-label text-white">Prix HT</label>
+                <input type="text" class="form-control" id="prixHt" formControlName="prixHt" [(ngModel)]=produit.prixHt>
+            </div>
+            <div class="mb-3 text-center">
+                <button (click)="onModify()" class="btn btn-success mx-2 my-2">Modifier</button>
+                <button (click)="onDelete()" class="btn btn-danger mx-2 my-2">Supprimer</button>
+            </div>
+        </form>
+    </div>
+</div>
+ 

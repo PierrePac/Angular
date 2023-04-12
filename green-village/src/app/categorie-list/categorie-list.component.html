@@ -1,0 +1,3 @@
+<div class="container-fluid col col-9 mx-auto d-flex flex-row justify-content-evenly flex-wrap ">   
+    <app-categorie *ngFor="let categorie of categories$ | async" [categorie]="categorie"></app-categorie>
+</div>

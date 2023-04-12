@@ -1,0 +1,7 @@
+<div class="card mx-2 my-2 h-100" style="width: 18rem" *ngIf="categorie.categories.length != 0">
+  <img class="card-img-top img-fluid w-50" src="http://127.0.0.1:8000/{{categorie.image}}" [alt]="categorie.nomination" *ngIf="categorie.image"/>
+  <div class="card-body">
+    <h5 class="card-title">{{ categorie.nomination | uppercase }}</h5>
+    <button (click)="onViewSousCategorie()" class="btn btn-outline-primary">voire les sous-catégories</button>
+  </div>
+</div>
