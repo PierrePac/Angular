@@ -30,9 +30,7 @@ export class NewProduitComponent implements OnInit {
 
   constructor(private formbuilder: FormBuilder,
     private categoriesService: CategoriesService,
-    private http: HttpClient,
-    private uploadService: uploadService,
-    private router: Router) { }
+    private uploadService: uploadService) { }
 
   ngOnInit(): void {
     this.images = [];

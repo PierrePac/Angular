@@ -11,9 +11,19 @@ export class AuthService{
     constructor(private httpClient: HttpClient,
                 ) {}
 
-    private Token!: string;
+    private token!: string;
+    private refresh_token!: string;
 
-    getToken(email: string, password: string):Observable<ReponseToken>{
-        return this.httpClient.post('http://127.0.0.1:800/auth');
+    authentification(formInfo: Object) {
+        this.httpClient.post<any>('http://127.0.0.1:8000/auth', formInfo).subscribe((response: ReponseToken) => {
+            this.token = response.token,
+            this.refresh_token = response.refresh_token
+            console.log(this.token);
+            console.log(this.refresh_token);
+        })
+    }
+
+    getToken(){
+        return this.token;
     }
 }

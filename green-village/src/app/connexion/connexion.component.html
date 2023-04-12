@@ -1,14 +1,14 @@
 <div class="col col-6 container-fluid my-5 d-flex flex-row">
-    <form class="align-self-center flex-fill">
+    <form class="align-self-center flex-fill" [formGroup]="connexionForm">
         <div class="mb-3">
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Adresse email">
-          <div id="emailHelp" class="form-text text-light">We'll never share your email with anyone else.</div>
+          <input type="email" class="form-control" aria-describedby="email" placeholder="Adresse email" formControlName="email">
+          <div id="email" class="form-text text-light">We'll never share your email with anyone else.</div>
         </div>
         <div class="mb-3">
-          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+          <input type="password" class="form-control" placeholder="Password" formControlName="password">
         </div>.
         <div class="text-end mx-5">
-            <button type="submit" class="btn btn-primary ">Connexion</button>
+            <button type="submit" class="btn btn-primary " (click)="onsubmit()">Connexion</button>
         </div>
       </form>
 </div>

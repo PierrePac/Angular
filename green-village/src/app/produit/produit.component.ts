@@ -69,7 +69,6 @@ export class ProduitComponent implements OnInit {
       const produitId = +this.route.snapshot.params['id'];
       if (this.file) {
         this.uploadService.uploadFile(this.file).subscribe((response: ResponsePhoto) => {
-          console.log(response.nom);
           this.uploadService.uploadPhoto(response.nom, produitId).pipe(delay(2000)).subscribe();
           this.ngOnInit();
           alert("Image chargé sur le serveur");
