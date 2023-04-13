@@ -11,7 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { ProduitComponent } from './produit/produit.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NewProduitComponent } from './new-produit/new-produit.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
 import { SousCategorieComponent } from './sous-categorie/sous-categorie.component';
 import { SousCategorieListComponent } from './sous-categorie-list/sous-categorie-list.component';
 import { ProduitsListComponent } from './produits-list/produits-list.component';
@@ -21,6 +21,7 @@ import * as fr from '@angular/common/locales/fr';
 import { NgbPaginationModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { httpInterceptorProviders } from './interceptors';
+import { retry } from 'rxjs';
 
 
 

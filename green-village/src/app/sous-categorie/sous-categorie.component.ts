@@ -15,7 +15,6 @@ export class SousCategorieComponent implements OnInit {
               ){}
 
   ngOnInit(){
-    console.log(this.categorie);
   }
 
   onViewproduitList(){

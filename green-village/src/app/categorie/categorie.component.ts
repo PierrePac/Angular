@@ -11,11 +11,9 @@ import { CategoriesService } from '../services/categories.service';
 export class CategorieComponent implements OnInit {
   @Input() categorie!: Categorie;
 
-  constructor(private categoriesService: CategoriesService,
-              private router: Router){}
+  constructor(private router: Router){}
 
   ngOnInit(){
-    console.log(this.categorie);
   }
 
   onViewSousCategorie(){
