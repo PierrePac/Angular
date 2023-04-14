@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +9,8 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent {
 
-  constructor(private router: Router){}
+  constructor(private router: Router,
+              private authService: AuthService){}
 
   onContinue(): void {
     this.router.navigateByUrl('categories')
@@ -16,5 +18,9 @@ export class HeaderComponent {
 
   onAddProduit(): void {
     this.router.navigateByUrl('/nouveau')
+  }
+
+  logout(){
+    this.authService.logout();
   }
 }

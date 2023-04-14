@@ -27,6 +27,7 @@ export class NewProduitComponent implements OnInit {
   images!: string[];
   imagePrincipale!: string;
   idNewProduit!: number;
+  token = localStorage.getItem('token');
 
   constructor(private formbuilder: FormBuilder,
     private categoriesService: CategoriesService,
@@ -35,27 +36,27 @@ export class NewProduitComponent implements OnInit {
   ngOnInit(): void {
     this.images = [];
 
-    this.categories$ = this.categoriesService.getAllSousCategories();
+      this.categories$ = this.categoriesService.getAllSousCategories();
 
-    this.produitForm = this.formbuilder.group({
-      refProduit: [null, Validators.required],
-      shortLibel: [null, Validators.required],
-      longLibel: [null, Validators.required],
-      idCategorie: [null, Validators.required],
-      prixHt: [null, Validators.required],
-    });
-    this.produitpreview$ = this.produitForm.valueChanges.pipe(
-      map(formValue => ({
-        ...formValue,
-        id: 0,
-      }))
-    );
-    this.photoPrincipalForm = this.formbuilder.group({
-      photoPrincipal: [null, Validators.required]
-    });
-    this.photoForm = this.formbuilder.group({
-      photo: [null, Validators.required]
-    });
+      this.produitForm = this.formbuilder.group({
+        refProduit: [null, Validators.required],
+        shortLibel: [null, Validators.required],
+        longLibel: [null, Validators.required],
+        idCategorie: [null, Validators.required],
+        prixHt: [null, Validators.required],
+      });
+      this.produitpreview$ = this.produitForm.valueChanges.pipe(
+        map(formValue => ({
+          ...formValue,
+          id: 0,
+        }))
+      );
+      this.photoPrincipalForm = this.formbuilder.group({
+        photoPrincipal: [null, Validators.required]
+      });
+      this.photoForm = this.formbuilder.group({
+        photo: [null, Validators.required]
+      });
   }
 
   onSubmitForm() {

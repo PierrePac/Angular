@@ -30,7 +30,7 @@ export class AuthService{
     logout(): void {
         localStorage.removeItem('token');
         localStorage.removeItem('refreshToken');
-        // Do any other cleanup, like resetting the user state
+        this.router.navigateByUrl('');
       }
     
     token = localStorage.getItem('token');

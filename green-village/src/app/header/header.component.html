@@ -3,10 +3,19 @@
         <img src="assets/logo_resized.png" alt="logo" class="img-fluid rounded me-2">
         <h1 class="d-flex align-items-center">Gestion des produits</h1>
     </div>
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8 text-center">
+            <a routerLink="" routerLinkActive="hidden" [routerLinkActiveOptions]="{exact: true}" class="btn btn-outline-primary mx-2 my-2">home</a>
+            <a routerLink="categories" routerLinkActive="hidden" [routerLinkActiveOptions]="{exact: true}" class="btn btn-outline-primary mx-2 my-2">Catégories</a>
+            <button (click)="onAddProduit()" type="button" routerLinkActive="hidden" [routerLinkActiveOptions]="{exact: true}" class="btn btn-outline-success my-2">Ajouter un produit</button>       
+        </div>
+        <div class="col-2">
+            <button (click)="logout()" type="button" class="btn btn-outline-success my-2">Déconnexion</button>       
+
+        </div>
+    </div>
     <div class="text-center">
-        <a routerLink="" routerLinkActive="hidden" [routerLinkActiveOptions]="{exact: true}" class="btn btn-outline-primary mx-2 my-2">home</a>
-        <a routerLink="categories" routerLinkActive="hidden" [routerLinkActiveOptions]="{exact: true}" class="btn btn-outline-primary mx-2 my-2">Catégories</a>
-        <button (click)="onAddProduit()" type="button" routerLinkActive="hidden" [routerLinkActiveOptions]="{exact: true}" class="btn btn-outline-success my-2">Ajouter un produit</button>   
     </div>
 
 </header>

@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
 
   token = localStorage.getItem('token');
+
   ngOnInit(): void {
   }
 
