@@ -28,7 +28,7 @@ export class uploadService implements ResponsePhoto, PipeTransform{
     public uploadFile(file: File): Observable<ResponsePhoto> {
         let formParams = new FormData();
         formParams.append('file', file);
-        return this.httpClient.post<any>(`http://127.0.0.1:8000/api/post_image`, formParams);
+        return this.httpClient.post<any>(`http://pierrep.amorce.org/api/post_image`, formParams);
     }
 
     public uploadProduit(formValue: {refProduit: string, shortLibel: string, longLibel: string, idCategorie: number, prixHt: number, slug: string}): Observable<Produit>{
@@ -39,7 +39,7 @@ export class uploadService implements ResponsePhoto, PipeTransform{
                 ...formValue,
                 slug: this.transform(formValue.shortLibel),
             })),
-            switchMap(newProduit => this.httpClient.post<Produit>('http://127.0.0.1:8000/api/produits', newProduit))
+            switchMap(newProduit => this.httpClient.post<Produit>('http://pierrep.amorce.org/api/produits', newProduit))
         );
     }
 
@@ -52,7 +52,7 @@ export class uploadService implements ResponsePhoto, PipeTransform{
                 src: 'assets/media/produits/' + images,
                 majorPicture: false,
             })),
-            switchMap(newPhoto => this.httpClient.post<Photo>('http://127.0.0.1:8000/api/photos', newPhoto))
+            switchMap(newPhoto => this.httpClient.post<Photo>('http://pierrep.amorce.org/api/photos', newPhoto))
         )
     }
     public  uploadPhotoPrincipale(image: string, idProduit: number): Observable<Photo>{
@@ -64,38 +64,38 @@ export class uploadService implements ResponsePhoto, PipeTransform{
                 src: 'assets/media/produits/' + image,
                 majorPicture: true,
             })),
-            switchMap(newPhoto => this.httpClient.post<Photo>('http://127.0.0.1:8000/api/photos', newPhoto))
+            switchMap(newPhoto => this.httpClient.post<Photo>('http://pierrep.amorce.org/api/photos', newPhoto))
         )
     }
 
     public deletePicture(idPicture: number): Observable<Photo>{
-        return this.httpClient.delete<Photo>(`http://127.0.0.1:8000/api/photos/${idPicture}`);
+        return this.httpClient.delete<Photo>(`http://pierrep.amorce.org/api/photos/${idPicture}`);
     }
     
     public PromotedPicture(idPicture: number, majorPicId: number){
         const majorOff = { majorPicture: false };
         const majorOn = { majorPicture: true };
-        this.httpClient.put(`http://127.0.0.1:8000/api/photos/${majorPicId}`, majorOff).subscribe();
-        this.httpClient.put(`http://127.0.0.1:8000/api/photos/${idPicture}`, majorOn).subscribe();
+        this.httpClient.put(`http://pierrep.amorce.org/api/photos/${majorPicId}`, majorOff).subscribe();
+        this.httpClient.put(`http://pierrep.amorce.org/api/photos/${idPicture}`, majorOn).subscribe();
     }
 
     public modifyProduit(idProduit: number, formValue: {refProduit: string, shortLibel: string, longLibel: string, idCategorie: string, prixHt: number}){
         const redProduit = { refProduit: formValue.refProduit };
-        this.httpClient.put(`http://127.0.0.1:8000/api/produits/${idProduit}`, redProduit).subscribe();
+        this.httpClient.put(`http://pierrep.amorce.org/api/produits/${idProduit}`, redProduit).subscribe();
         const shortLibel = { shortLibel: formValue.shortLibel };
-        this.httpClient.put(`http://127.0.0.1:8000/api/produits/${idProduit}`, shortLibel).subscribe();
+        this.httpClient.put(`http://pierrep.amorce.org/api/produits/${idProduit}`, shortLibel).subscribe();
         const slug = { slug: this.transform(formValue.shortLibel) };
-        this.httpClient.put(`http://127.0.0.1:8000/api/produits/${idProduit}`, slug).subscribe();
+        this.httpClient.put(`http://pierrep.amorce.org/api/produits/${idProduit}`, slug).subscribe();
         const longLibel = { longLibel: formValue.longLibel };
-        this.httpClient.put(`http://127.0.0.1:8000/api/produits/${idProduit}`, longLibel).subscribe();
+        this.httpClient.put(`http://pierrep.amorce.org/api/produits/${idProduit}`, longLibel).subscribe();
         const idCategorie = { idCategorie: formValue.idCategorie };
-        this.httpClient.put(`http://127.0.0.1:8000/api/produits/${idProduit}`, idCategorie).subscribe();
+        this.httpClient.put(`http://pierrep.amorce.org/api/produits/${idProduit}`, idCategorie).subscribe();
         const prixHt = { prixHt: formValue.prixHt };
-        this.httpClient.put(`http://127.0.0.1:8000/api/produits/${idProduit}`, prixHt).subscribe();
+        this.httpClient.put(`http://pierrep.amorce.org/api/produits/${idProduit}`, prixHt).subscribe();
     }
 
     public deleteProduit(idProduit: number){
-        this.httpClient.delete(`http://127.0.0.1:8000/api/produits/${idProduit}`).subscribe();
+        this.httpClient.delete(`http://pierrep.amorce.org/api/produits/${idProduit}`).subscribe();
     }
 
 

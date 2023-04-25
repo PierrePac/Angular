@@ -1,5 +1,5 @@
 <div class="card mx-2 mt-3 h-100" style="width: 18rem" *ngFor="let photo of photos$ | async" >
-  <img src="http://127.0.0.1:8000/{{photo.src}}" class="card-img-top" [alt]=produit.shortLibel>
+  <img src="http://pierrep.amorce.org/{{photo.src}}" class="card-img-top" [alt]=produit.shortLibel>
     <div class="card-body">
       <h5 class="card-title">{{produit.shortLibel}}</h5>
       <button (click)="onViewproduit()" class="btn btn-outline-primary">voire le Produit</button>

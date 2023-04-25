@@ -2,7 +2,7 @@
     <h1 class="text-center">Photo Principale</h1>
     <div class="photo my-2 mx-2" *ngFor="let photoPrincipale of majorPhoto$ | async">
         <div class="card mx-auto" style="width: 18rem;">
-            <img src="http://127.0.0.1:8000/{{photoPrincipale.src}}" class="card-img-top" [alt]=photoPrincipale.refProduit>
+            <img src="http://pierrep.amorce.org/{{photoPrincipale.src}}" class="card-img-top" [alt]=photoPrincipale.refProduit>
             <div class="card-body text-center">
                 <button class="btn btn-outline-danger mx-2 my-2">Supprimer</button>
             </div>
@@ -10,7 +10,7 @@
         <h1 class="text-center">Photos Secondaire</h1>
         <div class="photoSecondaires d-flex flex-row flex-wrap">
             <div class="card mx-auto my-2" style="width: 20rem;" *ngFor="let otherPic of otherPhotos$ | async">
-                <img src="http://127.0.0.1:8000/{{otherPic.src}}" class="card-img-top" [alt]=otherPic.refProduit>
+                <img src="http://pierrep.amorce.org/{{otherPic.src}}" class="card-img-top" [alt]=otherPic.refProduit>
                 <div class="card-body text-center">
                     <button (click)="this.promotePicture(otherPic.id, produit.id, photoPrincipale.id)" class="btn btn-outline-success mx-2 my-2 ">Définir comme principale</button>
                     <button (click)="this.deletePicture(otherPic.id)" class="btn btn-outline-danger mx-2 my-2 ">Supprimer</button>

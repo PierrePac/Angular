@@ -17,18 +17,18 @@ export class CategoriesService {
     ]
 
     getAllCategories(): Observable<Categorie[]> {
-        return this.http.get<Categorie[]>('http://127.0.0.1:8000/api/categories');
+        return this.http.get<Categorie[]>('http://pierrep.amorce.org/api/categories');
     }
 
     getAllSousCategories(): Observable<Categorie[]> {
-        return this.http.get<Categorie[]>('http://127.0.0.1:8000/api/categories?exists%5Bsous_cat%5D=true');
+        return this.http.get<Categorie[]>('http://pierrep.amorce.org/api/categories?exists%5Bsous_cat%5D=true');
     }
 
     getCategorieById(categorieId: number): Observable<Categorie[]> {
-        return this.http.get<Categorie[]>(`http://127.0.0.1:8000/api/categories/${categorieId}`);
+        return this.http.get<Categorie[]>(`http://pierrep.amorce.org/api/categories/${categorieId}`);
     }
 
     getSousCategorie(categorieId: number): Observable<Categorie[]>{
-        return this.http.get<Categorie[]>(`http://127.0.0.1:8000/api/categories?sous_cat%5B%5D=${categorieId}`);
+        return this.http.get<Categorie[]>(`http://pierrep.amorce.org/api/categories?sous_cat%5B%5D=${categorieId}`);
     }
 }

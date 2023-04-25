@@ -14,7 +14,7 @@ export class AuthService{
                 private router: Router) {}
                 
     authentification(formInfo: Object) {
-        this.httpClient.post<any>('http://127.0.0.1:8000/auth', formInfo).subscribe((response: ReponseToken) => {
+        this.httpClient.post<any>('http://pierrep.amorce.org/auth', formInfo).subscribe((response: ReponseToken) => {
             localStorage.setItem('token', response.token)
             localStorage.setItem('refreshToken', response.refresh_token)
             alert('Vous êtes connecté')
@@ -24,7 +24,7 @@ export class AuthService{
     refreshToken(data: {refresh_token: string}): Observable<ReponseToken>{
         const headers = new HttpHeaders().set('X-Skip-Interceptor', `true`);
         const options = { headers: headers }
-        return this.httpClient.post<ReponseToken>('http://127.0.0.1:8000/api/token/refresh', data, options)
+        return this.httpClient.post<ReponseToken>('http://pierrep.amorce.org/api/token/refresh', data, options)
     }
 
     logout(): void {
