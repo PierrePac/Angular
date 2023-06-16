@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
-import { Injectable, OnInit } from "@angular/core";
-import { Observable, map } from "rxjs";
+import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
 import { Photo } from "../models/photo.model";
 import { Produit } from "../models/produit.model";
 

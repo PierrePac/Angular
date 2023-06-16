@@ -11,11 +11,6 @@ export class CategoriesService {
     constructor (private http: HttpClient) {}
 
 
-
-    categories: Categorie[] = [
-        
-    ]
-
     getAllCategories(): Observable<Categorie[]> {
         return this.http.get<Categorie[]>('http://pierrep.amorce.org/api/categories');
     }
